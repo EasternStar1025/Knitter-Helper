@@ -105,26 +105,12 @@ class projects_window(tk.Toplevel):
         add_window: add_project_window = add_project_window(self)
         add_window.grab_set() # force this window to the foreground
 
-    # def create_radio_buttons(self):
-    #     variables = [self.data]
-
-    #     for i in range(variable):
-    #         # Create the new variable
-    #         variable = tk.IntVar()
-    #         variables.append(variable)
-
-    #         # Create the command using partial
-    #         command = partial(function, i)
-
-    #         # Create the radio button
-    #         list_button = tk.Radiobutton(self, variable=variable, value=i, command=command)
-    #         list_button.pack()
-
     def close_window(self):
-        add_project_window.destroy(self)
+        # Returns to the main menu window
+        projects_window.destroy(self)
     
     def read_file(self):
-        # Read the file contents 
+        # Reads the file contents 
         self.file_path = "knitter_helper4.txt"
         with open(self.file_path, "r") as file:
             self.file_read = file.read()
@@ -212,7 +198,7 @@ class add_project_window(tk.Toplevel):
 
 
     def clear(self):
-        # Clears the entry boxes and errors
+        # Clears the entry boxes when save is successful
         self.name_entry.delete(0, tk.END)
         self.type_entry.delete(0, tk.END)
         self.yarn_entry.delete(0, tk.END)
@@ -248,6 +234,7 @@ class add_project_window(tk.Toplevel):
             file.close()
     
     def close_window(self):
+        # Returns to the Project Menu Window
         add_project_window.destroy(self)
     
 # Run program
