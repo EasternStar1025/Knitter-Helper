@@ -65,7 +65,7 @@ class projects_window(tk.Toplevel):
     def __init__(self, parent: tk.Tk):
         super().__init__(parent)
         self.title('Project List')
-        self.geometry('320x320')
+        # self.geometry('')
         self.configure(bg="lightblue")
 
         # Setting icon file paths
@@ -98,6 +98,7 @@ class projects_window(tk.Toplevel):
         self.button_new_project.pack()
         self.back_button.pack()
         self.button_exit.pack()
+        self.read_file()
     
     def button_add(self) -> None:
         # Create the add_project window and set focus to it
@@ -121,12 +122,15 @@ class projects_window(tk.Toplevel):
 
     def close_window(self):
         add_project_window.destroy(self)
-
+    
     def read_file(self):
+        # Read the file contents 
         self.file_path = "knitter_helper4.txt"
-    # Read the file contents 
         with open(self.file_path, "r") as file:
-            print(file.read())
+            self.file_read = file.read()
+            self.file_label: tk.Label = tk.Label(self, text = self.file_read)
+            self.file_label.pack() 
+            print(self.file_read)
             file.close()
 
 # Window to add new projects to the list
@@ -134,7 +138,7 @@ class add_project_window(tk.Toplevel):
     def __init__(self, parent: tk.Tk):
         super().__init__(parent)
         self.title('Add A New Project')
-        self.geometry('320x350')
+        # self.geometry('320x350')
         self.configure(bg="lightblue")
 
         # Setting icon file paths
@@ -168,8 +172,7 @@ class add_project_window(tk.Toplevel):
         # Save and Exit Buttons
         self.button_exit = ttk.Button(self, text = "Exit", image= self.button_exit_png, command = quit)
         self.back_button = ttk.Button(self, text = "Back", image= self.button_back_png, command = self.close_window)
-        self.save_button: tk.Button = tk.Button(self, text='Save Project', image = self.button_save_png, command = self.write_to_file)
-
+        self.save_button: tk.Button = tk.Button(self, text='Save Project', image = self.button_save_png, command = self.validation)
         # Adding widgets to the window
         self.name_label.pack()        
         self.name_entry.pack()
@@ -188,14 +191,44 @@ class add_project_window(tk.Toplevel):
         self.type = []
         self.yarn = []
         self.needle = []
-     
+
+    def validation(self):
+          # Checks the entry boxes are NOT empty
+        if self.name_entry.get() == "" or self.type_entry.get() == "" or self.yarn_entry.get() == "" or self.needle_entry.get() == "":
+            if self.name_entry.get() == "":
+                self.validation_error_label1: tk.Label = tk.Label(self, text = "The text box 'Project Name' can't be empty.")
+                self.validation_error_label1.pack()
+            if self.type_entry.get() == "":
+                self.validation_error_label2: tk.Label = tk.Label(self, text = "The text box 'Project Type' can't be empty.")
+                self.validation_error_label2.pack()
+            if self.yarn_entry.get() == "":
+                self.validation_error_label3: tk.Label = tk.Label(self, text = "The text box 'Yarn Weight' can't be empty.")
+                self.validation_error_label3.pack()
+            if self.needle_entry.get() == "":
+                self.validation_error_label4: tk.Label = tk.Label(self, text = "The text box 'Needle Size' can't be empty.")
+                self.validation_error_label4.pack()
+        else:
+            self.write_to_file()
+
+
+    def clear(self):
+        # Clears the entry boxes and errors
+        self.name_entry.delete(0, tk.END)
+        self.type_entry.delete(0, tk.END)
+        self.yarn_entry.delete(0, tk.END)
+        self.needle_entry.delete(0, tk.END)
+
     def write_to_file(self):
         # Create list appendments from newest entries
         self.name.append(self.name_entry.get())
         self.type.append(self.type_entry.get())
         self.yarn.append(self.yarn_entry.get())
         self.needle.append(self.needle_entry.get())
-        self.data = [self.name, self.type, self.yarn, self.needle]  
+        self.data = [self.name, self.type, self.yarn, self.needle] 
+        self.clear()         
+        self.save_successful_label: tk.Label = tk.Label(self, text = "Save successful!")
+        self.save_successful_label.pack()
+
 
         # Set save text file path
         self.file_path = "knitter_helper4.txt"
@@ -210,7 +243,8 @@ class add_project_window(tk.Toplevel):
     def read_file(self):
         # Read the file contents 
         with open(self.file_path, "r") as file:
-            print(file.read())
+            file_read = file.read()
+            print(file_read)
             file.close()
     
     def close_window(self):
