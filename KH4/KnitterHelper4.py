@@ -31,11 +31,9 @@ class main_window(tk.Tk):
         
         # Setting icon file paths
         self.button_exit_path: str = 'exit1.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/23537/close-window">Exit</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
         self.button_projects_path: str = 'menu1.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/20406/bulleted-list">Bulleted List</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
         self.main_image_path: str = 'yarn_100.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/ZNv5i4TDioH0/yarn">Yarn</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
 
         # Button Images/Icons
         self.button_exit_png: tk.PhotoImage = tk.PhotoImage(file=self.button_exit_path)
@@ -70,13 +68,10 @@ class projects_window(tk.Toplevel):
 
         # Setting icon file paths
         self.button_exit_path: str = 'exit1.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/23537/close-window">Exit</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
         self.button_projects_path: str = 'menu1.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/20406/bulleted-list">Bulleted List</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
         self.button_back_path: str = 'back1.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/3483/return">Return</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
         self.button_add_path: str = 'add1.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/5271/add-properties">Add properties</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+ 
 
         # Button Images/Icons
         self.button_exit_png: tk.PhotoImage = tk.PhotoImage(file=self.button_exit_path)
@@ -129,13 +124,10 @@ class add_project_window(tk.Toplevel):
 
         # Setting icon file paths
         self.button_exit_path: str = 'exit1.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/23537/close-window">Exit</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
         self.button_projects_path: str = 'menu1.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/20406/bulleted-list">Bulleted List</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
         self.button_back_path: str = 'back1.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/3483/return">Return</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
         self.button_add_path: str = 'add1.png'
-        # Icon source: <a target="_blank" href="https://icons8.com/icon/5271/add-properties">Add properties</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
 
         # Button Images/Icons
         self.button_exit_png: tk.PhotoImage = tk.PhotoImage(file=self.button_exit_path)
